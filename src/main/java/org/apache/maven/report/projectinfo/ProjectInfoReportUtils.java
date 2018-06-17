@@ -392,4 +392,24 @@ public class ProjectInfoReportUtils
 
         return conn;
     }
+
+    /**
+     * Convenience method to return the name of a web-based mailing list archive server. <br>
+     * For instance, if the archive uri is <code>http://www.mail-archive.com/dev@maven.apache.org</code>, this
+     * method return <code>www.mail-archive.com</code>
+     *
+     * @param uri
+     * @return the server name of a web-based mailing list archive server
+     */
+    public static String getArchiveServer( String uri )
+    {
+        try
+        {
+            return URI.create(uri).getHost();
+        } catch (IllegalArgumentException e)
+        {
+            // ignore
+        }
+        return "???UNKNOWN???";
+    }
 }

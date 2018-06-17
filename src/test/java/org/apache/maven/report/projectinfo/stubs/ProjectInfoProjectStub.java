@@ -154,8 +154,10 @@ public abstract class ProjectInfoProjectStub
     @Override
     public List<ArtifactRepository> getRemoteArtifactRepositories()
     {
-        ArtifactRepository repository = new DefaultArtifactRepository( "central", "https://repo1.maven.org/maven2",
-                                                                       new DefaultRepositoryLayout() );
+        ArtifactRepository repository = new DefaultArtifactRepository(
+                org.apache.maven.repository.RepositorySystem.DEFAULT_REMOTE_REPO_ID,
+                org.apache.maven.repository.RepositorySystem.DEFAULT_REMOTE_REPO_URL,
+                new DefaultRepositoryLayout() );
 
         return Collections.singletonList( repository );
     }

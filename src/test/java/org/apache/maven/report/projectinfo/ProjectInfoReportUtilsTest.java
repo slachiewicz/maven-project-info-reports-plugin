@@ -60,6 +60,31 @@ public class ProjectInfoReportUtilsTest
 
     private Server jettyServer;
 
+    /**
+     * @throws Throwable if any
+     */
+    public static void testGetArchiveServer()
+        throws Throwable
+    {
+        String server = "http://mail-archives.apache.org/mod_mbox/maven-announce/";
+        assertEquals( "mail-archives.apache.org", ProjectInfoReportUtils.getArchiveServer( server ) );
+
+        server = "http://mail-archives.apache.org/mod_mbox/maven-announce";
+        assertEquals( "mail-archives.apache.org", ProjectInfoReportUtils.getArchiveServer( server ) );
+
+        server = "http://www.mail-archive.com/announce@maven.apache.org";
+        assertEquals( "www.mail-archive.com", ProjectInfoReportUtils.getArchiveServer( server ) );
+
+        server = "http://www.nabble.com/Maven-Announcements-f15617.html";
+        assertEquals( "www.nabble.com", ProjectInfoReportUtils.getArchiveServer( server ) );
+
+        server = "http://maven.announce.markmail.org/";
+        assertEquals( "maven.announce.markmail.org", ProjectInfoReportUtils.getArchiveServer( server ) );
+
+        server = "http://maven.announce.markmail.org";
+        assertEquals( "maven.announce.markmail.org", ProjectInfoReportUtils.getArchiveServer( server ) );
+    }
+
     protected void setUp()
         throws Exception
     {

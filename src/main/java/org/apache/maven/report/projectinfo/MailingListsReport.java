@@ -31,6 +31,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import static org.apache.maven.report.projectinfo.ProjectInfoReportUtils.getArchiveServer;
+
 /**
  * Generates the Mailing Lists report.
  *
@@ -214,7 +216,7 @@ public class MailingListsReport
                     textRow.add( createLinkPatternedText(
                             ProjectInfoReportUtils.getArchiveServer( otherArchive ), otherArchive ) );
 
-                    tableRow( textRow.toArray( new String[textRow.size()] ) );
+                    tableRow( textRow.toArray( new String[ 0 ] ) );
 
                     // Other lines...
                     while ( it.hasNext() )
@@ -242,7 +244,7 @@ public class MailingListsReport
                         textRow.add( createLinkPatternedText(
                                 ProjectInfoReportUtils.getArchiveServer( otherArchive ), otherArchive ) );
 
-                        tableRow( textRow.toArray( new String[textRow.size()] ) );
+                        tableRow( textRow.toArray( new String[ 0 ] ) );
                     }
                 }
                 else
@@ -252,7 +254,7 @@ public class MailingListsReport
                         textRow.add( null );
                     }
 
-                    tableRow( textRow.toArray( new String[textRow.size()] ) );
+                    tableRow( textRow.toArray( new String[ 0 ] ) );
                 }
             }
 
