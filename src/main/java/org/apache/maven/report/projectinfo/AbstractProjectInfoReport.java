@@ -221,7 +221,8 @@ public abstract class AbstractProjectInfoReport
             SiteRenderingContext siteContext = siteRenderer.createContextForSkin( defaultSkin, attributes,
                                                                                   model, getName( locale ), locale );
 
-            RenderingContext context = new RenderingContext( outputDirectory, filename, null );
+            RenderingContext context = new RenderingContext(
+                    outputDirectory, null, filename, null, null, false, null );
 
             SiteRendererSink sink = new SiteRendererSink( context );
 
