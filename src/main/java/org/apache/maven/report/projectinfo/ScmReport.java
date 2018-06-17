@@ -906,12 +906,8 @@ public class ScmReport
                 return false;
             }
 
-            if ( scmRepository != null && scmProvider.equalsIgnoreCase( scmRepository.getProvider() ) )
-            {
-                return true;
-            }
+            return scmRepository != null && scmProvider.equalsIgnoreCase( scmRepository.getProvider() );
 
-            return false;
         }
     }
 }

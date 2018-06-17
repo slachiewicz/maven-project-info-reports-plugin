@@ -259,12 +259,8 @@ public class SummaryReport
             // maven-compiler-plugin ?
             Xpp3Dom pluginConfig =
                 project.getGoalConfiguration( "org.apache.maven.plugins", "maven-compiler-plugin", null, null );
-            if ( pluginConfig != null )
-            {
-                return true;
-            }
+            return pluginConfig != null;
 
-            return false;
         }
     }
 }

@@ -62,6 +62,8 @@ import org.apache.maven.shared.jar.JarData;
 import org.codehaus.plexus.i18n.I18N;
 import org.codehaus.plexus.util.StringUtils;
 
+import static org.codehaus.plexus.util.StringUtils.isNotEmpty;
+
 /**
  * Renderer the dependencies report.
  *
@@ -843,7 +845,7 @@ public class DependenciesRenderer
 
         sink.listItem();
 
-        sink.text( id + ( StringUtils.isNotEmpty( artifact.getScope() ) ? " (" + artifact.getScope() + ") " : " " ) );
+        sink.text( id + ( isNotEmpty( artifact.getScope() ) ? " (" + artifact.getScope() + ") " : " " ) );
 
         String javascript = String.format( "<img id=\"%s\" src=\"%s\" alt=\"%s\""
                 + " onclick=\"toggleDependencyDetails( '%s', '%s' );\""
@@ -857,7 +859,7 @@ public class DependenciesRenderer
         if ( !node.getChildren().isEmpty() )
         {
             boolean toBeIncluded = false;
-            List<DependencyNode> subList = new ArrayList<DependencyNode>();
+            List<DependencyNode> subList = new ArrayList<>();
             for ( DependencyNode dep : node.getChildren() )
             {
                 if ( dependencies.getAllDependencies().contains( dep.getArtifact() ) )
@@ -915,7 +917,7 @@ public class DependenciesRenderer
                 sink.bold();
                 sink.text( getI18nString( "column.description" ) + ": " );
                 sink.bold_();
-                if ( StringUtils.isNotEmpty( artifactDescription ) )
+                if ( isNotEmpty( artifactDescription ) )
                 {
                     sink.text( artifactDescription );
                 }
@@ -925,7 +927,7 @@ public class DependenciesRenderer
                 }
                 sink.paragraph_();
 
-                if ( StringUtils.isNotEmpty( artifactUrl ) )
+                if ( isNotEmpty( artifactUrl ) )
                 {
                     sink.paragraph();
                     sink.bold();
@@ -1118,7 +1120,7 @@ public class DependenciesRenderer
     {
         for ( Artifact artifact : artifacts )
         {
-            if ( StringUtils.isNotEmpty( artifact.getClassifier() ) )
+            if ( isNotEmpty( artifact.getClassifier() ) )
             {
                 return true;
             }
