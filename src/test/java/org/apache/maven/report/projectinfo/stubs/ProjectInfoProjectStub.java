@@ -39,7 +39,6 @@ import org.apache.maven.model.Model;
 import org.apache.maven.model.PluginManagement;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugin.testing.stubs.MavenProjectStub;
-import org.apache.maven.shared.utils.io.IOUtil;
 import org.codehaus.plexus.util.ReaderFactory;
 import org.codehaus.plexus.util.xml.XmlStreamReader;
 
@@ -62,22 +61,15 @@ public abstract class ProjectInfoProjectStub
     public ProjectInfoProjectStub()
     {
         MavenXpp3Reader pomReader = new MavenXpp3Reader();
-        XmlStreamReader reader = null;
-        try
+        try ( XmlStreamReader reader = ReaderFactory.newXmlReader( new File( getBasedir(), getPOM() ) ))
         {
-            reader = ReaderFactory.newXmlReader( new File( getBasedir(), getPOM() ) );
             model = pomReader.read( reader );
             reader.close();
-            reader = null;
             setModel( model );
         }
         catch ( Exception e )
         {
             throw new RuntimeException( e );
-        }
-        finally
-        {
-            IOUtil.close( reader );
         }
 
         setGroupId( model.getGroupId() );

@@ -216,7 +216,7 @@ public class MailingListsReport
                     textRow.add( createLinkPatternedText(
                             ProjectInfoReportUtils.getArchiveServer( otherArchive ), otherArchive ) );
 
-                    tableRow( textRow.toArray( new String[ 0 ] ) );
+                    tableRow( textRow.toArray( new String[0] ) );
 
                     // Other lines...
                     while ( it.hasNext() )
@@ -244,7 +244,7 @@ public class MailingListsReport
                         textRow.add( createLinkPatternedText(
                                 ProjectInfoReportUtils.getArchiveServer( otherArchive ), otherArchive ) );
 
-                        tableRow( textRow.toArray( new String[ 0 ] ) );
+                        tableRow( textRow.toArray( new String[0] ) );
                     }
                 }
                 else
@@ -254,7 +254,7 @@ public class MailingListsReport
                         textRow.add( null );
                     }
 
-                    tableRow( textRow.toArray( new String[ 0 ] ) );
+                    tableRow( textRow.toArray( new String[0] ) );
                 }
             }
 

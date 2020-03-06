@@ -67,7 +67,8 @@ public class PluginManagementReportTest
                              isA( ProjectBuildingRequest.class ) ) ).thenAnswer( new Answer<ProjectBuildingResult>()
                              {
                                  @Override
-                                 public ProjectBuildingResult answer( InvocationOnMock invocation ) {
+                                 public ProjectBuildingResult answer( InvocationOnMock invocation )
+                                 {
                                      return createProjectBuildingResult( (Artifact) invocation.getArgument( 0 ), 
                                                                          "http://m.a.o/" );
                                  }

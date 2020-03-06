@@ -19,7 +19,6 @@ package org.apache.maven.report.projectinfo.stubs;
  * under the License.
  */
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

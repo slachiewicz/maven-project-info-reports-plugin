@@ -620,7 +620,7 @@ public class DependencyConvergenceReport
         }
         sink.nonBreakingSpace();
         sink.bold();
-        sink.text( String.valueOf( convergence ) + " %" );
+        sink.text( convergence + " %" );
         sink.bold_();
         sink.tableCell_();
         sink.tableRow_();

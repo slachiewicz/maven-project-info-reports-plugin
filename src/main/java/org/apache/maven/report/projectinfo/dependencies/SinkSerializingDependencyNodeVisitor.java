@@ -39,7 +39,7 @@ public class SinkSerializingDependencyNodeVisitor
     /**
      * Provides tokens to use when serializing the dependency tree.
      */
-    private class TreeTokens
+    private static class TreeTokens
     {
         private final Sink sink;
 
@@ -53,13 +53,12 @@ public class SinkSerializingDependencyNodeVisitor
             if ( last )
             {
                 sink.text( "\\-" );
-                sink.nonBreakingSpace();
             }
             else
             {
                 sink.text( "+-" );
-                sink.nonBreakingSpace();
             }
+            sink.nonBreakingSpace();
         }
 
         void fillIndent( boolean last )

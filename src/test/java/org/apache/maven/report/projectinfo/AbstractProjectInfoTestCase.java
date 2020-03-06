@@ -81,13 +81,6 @@ public abstract class AbstractProjectInfoTestCase
         Locale.setDefault( DEFAULT_LOCALE );
     }
 
-    @Override
-    protected void tearDown()
-        throws Exception
-    {
-        super.tearDown();
-    }
-
     /**
      * Gets a trimmed String for the given key from the resource bundle defined by Plexus.
      *

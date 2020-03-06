@@ -90,7 +90,7 @@ public class ProjectInfoReportUtilsTest
     {
         super.setUp();
 
-        final List<org.apache.maven.settings.Server> servers = new ArrayList<org.apache.maven.settings.Server>();
+        final List<org.apache.maven.settings.Server> servers = new ArrayList<>();
         org.apache.maven.settings.Server server = new org.apache.maven.settings.Server();
         server.setId( "localhost" );
         server.setUsername( "admin" );
@@ -138,12 +138,6 @@ public class ProjectInfoReportUtilsTest
                 return distributionManagement;
             }
         };
-    }
-
-    protected void tearDown()
-        throws Exception
-    {
-        super.tearDown();
     }
 
     public void testGetInputStreamURL()

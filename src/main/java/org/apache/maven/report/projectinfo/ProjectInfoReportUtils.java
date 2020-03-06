@@ -129,22 +129,10 @@ public class ProjectInfoReportUtils
 
         if ( "file".equals( scheme ) )
         {
-            InputStream in = null;
-            try
+            URLConnection conn = url.openConnection();
+            try ( InputStream in = conn.getInputStream() )
             {
-                URLConnection conn = url.openConnection();
-                in = conn.getInputStream();
-
-                final String content = IOUtil.toString( in, encoding );
-
-                in.close();
-                in = null;
-
-                return content;
-            }
-            finally
-            {
-                IOUtil.close( in );
+                return IOUtil.toString( in, encoding );
             }
         }
 
@@ -189,22 +177,10 @@ public class ProjectInfoReportUtils
             }
         }
 
-        InputStream in = null;
-        try
+        URLConnection conn = getURLConnection( url, project, settings );
+        try ( InputStream in = conn.getInputStream() )
         {
-            URLConnection conn = getURLConnection( url, project, settings );
-            in = conn.getInputStream();
-
-            final String string = IOUtil.toString( in, encoding );
-
-            in.close();
-            in = null;
-
-            return string;
-        }
-        finally
-        {
-            IOUtil.close( in );
+            return IOUtil.toString( in, encoding );
         }
     }
 

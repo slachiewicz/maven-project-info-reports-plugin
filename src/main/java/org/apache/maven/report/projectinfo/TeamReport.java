@@ -297,7 +297,7 @@ public class TeamReport
                 {
                     // Comma separated roles
                     List<String> var = member.getRoles();
-                    tableCell( StringUtils.join( var.toArray( new String[var.size()] ), ", " ) );
+                    tableCell( StringUtils.join( var.toArray( new String[0] ), ", " ) );
                 }
                 else
                 {
@@ -383,7 +383,7 @@ public class TeamReport
             setRequiredArray( requiredHeaders, requiredArray, name, email, url, organization, organizationUrl,
                               roles, timeZone, properties );
 
-            return requiredArray.toArray( new String[requiredArray.size()] );
+            return requiredArray.toArray( new String[0] );
         }
 
         /**

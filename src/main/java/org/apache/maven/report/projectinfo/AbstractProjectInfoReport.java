@@ -65,9 +65,10 @@ import org.codehaus.plexus.interpolation.InterpolationException;
 import org.codehaus.plexus.interpolation.PrefixedObjectValueSource;
 import org.codehaus.plexus.interpolation.PropertiesBasedValueSource;
 import org.codehaus.plexus.interpolation.RegexBasedInterpolator;
-import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.StringUtils;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * Base class with the things that should be in AbstractMavenReport anyway.
@@ -202,7 +203,6 @@ public abstract class AbstractProjectInfoReport
         }
 
         // TODO: push to a helper? Could still be improved by taking more of the site information from the site plugin
-        Writer writer = null;
         try
         {
             String filename = getOutputName() + ".html";
@@ -230,23 +230,18 @@ public abstract class AbstractProjectInfoReport
 
             outputDirectory.mkdirs();
 
-            writer = new OutputStreamWriter( new FileOutputStream( new File( outputDirectory, filename ) ), "UTF-8" );
+            try ( Writer writer = new OutputStreamWriter(
+                    new FileOutputStream( new File( outputDirectory, filename ) ), UTF_8 ) )
+            {
+                siteRenderer.mergeDocumentIntoSite( writer, sink, siteContext );
 
-            siteRenderer.mergeDocumentIntoSite( writer, sink, siteContext );
-
-            siteRenderer.copyResources( siteContext, outputDirectory );
-
-            writer.close();
-            writer = null;
+                siteRenderer.copyResources( siteContext, outputDirectory );
+            }
         }
         catch ( RendererException | IOException | SiteToolException | MavenReportException e )
         {
             throw new MojoExecutionException( "An error has occurred in " + getName( Locale.ENGLISH )
                 + " report generation.", e );
-        }
-        finally
-        {
-            IOUtil.close( writer );
         }
     }
 
